@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div>
-            <div>
-
+            <div className='md:grid grid-cols-3 mt-5'>
+                <div></div>
                 <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                     <h1 className="text-2xl font-bold text-center">Login</h1>
                     <form action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
@@ -51,7 +51,7 @@ const Login = () => {
                         <Link rel="noopener noreferrer" to='/Register' className="underline dark:text-gray-100">Sign up</Link>
                     </p>
                 </div>
-
+                <div></div>
             </div>
         </div>
     );
