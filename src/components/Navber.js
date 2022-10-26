@@ -73,7 +73,7 @@ const Navber = () => {
                 <ul className="flex items-center hidden space-x-8 lg:flex">
                     <li>
                         <Link
-                            to="/"
+                            to="/Login"
                             aria-label="Product pricing"
                             title="Login"
                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
