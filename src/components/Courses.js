@@ -66,7 +66,7 @@ const Courses = () => {
                                             </div>
                                         </div>
                                         <div className="space-y-2">
-                                            <h3 className="text-xl font-semibold dark:text-violet-400">{course.title}</h3>
+                                            <h3 className="text-xl font-semibold text-blue-900">{course.title}</h3>
                                             <p className="leading-snug dark:text-gray-400">{course.description.slice(0, 100) + '....'}</p>
                                             <div className='flex'>
                                                 <p className='mr-2'>Ratigs: <span>{course.rating.rate}</span></p>

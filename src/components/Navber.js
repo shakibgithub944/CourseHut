@@ -93,14 +93,15 @@ const Navber = () => {
                     </li>
 
                     <li>
-                        <Link
-                            to="/"
-                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                            aria-label="Sign up"
-                            title="Sign up"
-                        >
-                            Theme
-                        </Link>
+                        <label htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer">
+                            {/* <span>Dark</span> */}
+                            <span className="relative">
+                                <input id="Toggle1" type="checkbox" className="hidden peer" />
+                                <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 peer-checked:dark:bg-violet-400"></div>
+                                <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800"></div>
+                            </span>
+                            {/* <span>Light</span> */}
+                        </label>
                     </li>
                 </ul>
                 <div className="lg:hidden">
@@ -211,14 +212,15 @@ const Navber = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link
-                                                to=""
-                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                aria-label="Sign up"
-                                                title="Sign up"
-                                            >
-                                                Theme
-                                            </Link>
+                                            <label htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer">
+                                                {/* <span>Dark</span> */}
+                                                <span className="relative">
+                                                    <input id="Toggle1" type="checkbox" className="hidden peer" />
+                                                    <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 peer-checked:dark:bg-violet-400"></div>
+                                                    <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800"></div>
+                                                </span>
+                                                {/* <span>Light</span> */}
+                                            </label>
                                         </li>
                                     </ul>
                                 </nav>
