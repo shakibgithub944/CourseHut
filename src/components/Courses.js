@@ -1,13 +1,20 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { BeakerIcon, StarIcon } from '@heroicons/react/24/solid'
+
 
 const Courses = () => {
+
+    const allData = useLoaderData();
+
     return (
-        <div className='md:grid grid-cols-[300px_minmax(900px,_1fr)_100px]'>
+        <div className=' md:grid grid-cols-[300px_minmax(900px,_1fr)_100px]'>
             <div className='mr-4'>
                 <div className="flex flex-col h-screen p-3 w-60 dark:bg-gray-900 dark:text-gray-100">
                     <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                        <button className="p-2">
+                            <button className="p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-100">
                                     <rect width="352" height="32" x="80" y="96"></rect>
                                     <rect width="352" height="32" x="80" y="240"></rect>
@@ -28,54 +35,56 @@ const Courses = () => {
                         </div>
                         <div className="flex-1">
                             <ul className="pt-2 pb-4 space-y-1 text-sm">
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                                                                <span>Home</span>
-                                    </a>
-                                </li>
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Search</span>
-                                    </a>
-                                </li>
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Chat</span>
-                                    </a>
-                                </li>
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Orders</span>
-                                    </a>
-                                </li>
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Wishlist</span>
-                                    </a>
-                                </li>
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
-                                <li className="rounded-sm">
-                                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Logout</span>
-                                    </a>
-                                </li>
+                                {
+                                    allData.map(courseTitle => <div
+                                        key={courseTitle.id}
+                                    >
+                                        <Link to={`/Course/${courseTitle.id}`}><li className='p-2'>{courseTitle.title}</li></Link>
+
+                                    </div>)
+                                }
                             </ul>
                         </div>
                     </div>
-                 </div>
+                </div>
             </div>
 
-            <div> <h1>Course content</h1></div>
+            <div className='md:grid grid-cols-3 gap-5'>
+
+                {
+                    allData.map(course =>
+                        <div key={course.id}
+                            className=''
+                        >
+                            <Link to={`/Course/${course.id}`}>
+                                <div className=" p-4 shadow-md ">
+                                    <div className="space-y-4">
+                                        <div className="space-y-2">
+                                            <img src={course.image} alt="" className="w-full h-60" />
+                                            <div className="flex items-center text-xs">
+                                                <span>{course.classTime} Hours</span>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <h3 className="text-xl font-semibold dark:text-violet-400">{course.title}</h3>
+                                            <p className="leading-snug dark:text-gray-400">{course.description.slice(0, 100) + '....'}</p>
+                                            <div className='flex'>
+                                                <p className='mr-2'>Ratigs: <span>{course.rating.rate}</span></p>
+                                                <p><StarIcon className='h-5'></StarIcon></p>
+                                                <p><StarIcon className='h-5'></StarIcon></p>
+                                                <p><StarIcon className='h-5'></StarIcon></p>
+                                            </div>
+                                            <p className=''>Price: $<span className='font-bold'>{course.price}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        </div>
+
+                    )
+                }
+
+            </div>
         </div>
     );
 };
