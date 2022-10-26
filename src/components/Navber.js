@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import logo from '../asset/logo.png'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../UserContext/UserContexts';
+import { toast } from 'react-hot-toast';
+
 
 const Navber = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                toast.warning('Your are Sign Out')
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     return (
         <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
             <div className="relative flex items-center justify-between">
@@ -70,27 +86,46 @@ const Navber = () => {
                         </Link>
                     </li>
                 </ul>
+
+
+                <div className='flex items-center hidden space-x-8 lg:flex'>
+                    {
+                        user?.email ? user.email: 'N/A'
+                    }
+
+                    <img src="" className='h-12 rounded' alt="" />
+                </div>
+
+
                 <ul className="flex items-center hidden space-x-8 lg:flex">
-                    <li>
-                        <Link
-                            to="/Login"
-                            aria-label="Product pricing"
-                            title="Login"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                            Login
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/Register"
-                            aria-label="Product pricing"
-                            title="Register"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                            Register
-                        </Link>
-                    </li>
+
+                    {
+                        user?.email ? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
+                            :
+                            <div className='flex'>
+                                <li className='mr-4'>
+                                    <Link
+                                        to="/Login"
+                                        aria-label="Product pricing"
+                                        title="Login"
+                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                    >
+                                        Login
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/Register"
+                                        aria-label="Product pricing"
+                                        title="Register"
+                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                    >
+                                        Register
+                                    </Link>
+                                </li>
+                            </div>
+                    }
+
 
                     <li>
                         <label htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer">

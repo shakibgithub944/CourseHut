@@ -1,32 +1,59 @@
-import React from 'react';
+import { Result } from 'postcss';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../UserContext/UserContexts';
 
 
 const Register = () => {
+    const { createNewUser } = useContext(AuthContext);
 
-    
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(name, email, password);
+        createNewUser(email, password)
+            .then(Result => {
+                const user = Result.user;
+                form.reset();
+                toast.success('Successfully Registered');
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div>
 
             <div className='md:grid grid-cols-3 mt-5'>
                 <div></div>
-                <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
+                <div className="w-96 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                     <h1 className="text-2xl font-bold text-center">Sign up</h1>
-                    <form action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
-                        <div className="space-y-1 text-sm">
+                    <form onSubmit={handleRegister} className="space-y-6 ng-untouched ng-pristine ng-valid">
+                        <div className="space-y-1 text-sm ">
                             <label htmlFor="username" className="block dark:text-gray-400">Name</label>
 
-                            <input type="text" name="Name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md " />
+                            <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md text-black" required />
+
+                        </div>
+                        <div className="space-y-1 text-sm ">
+                            <label htmlFor="username" className="block dark:text-gray-400">PhotoUrl</label>
+
+                            <input type="text" name="name" id="" placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md text-black" required />
 
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
 
-                            <input type="text" name="Email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md " />
+                            <input type="email" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md text-black " required/>
 
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="password" className="block dark:text-gray-400">Password</label>
-                            <input type="password" name="Password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md" />
+                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md text-black" required />
                         </div>
                         <button className="block w-full p-3 text-center rounded-sm btn-active px-8 py-3 font-semibold border dark:border-gray-100 dark:text-gray-100  ">Sign up</button>
                     </form>

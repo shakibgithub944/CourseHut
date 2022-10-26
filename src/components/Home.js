@@ -1,31 +1,54 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+
+import { AuthContext } from '../UserContext/UserContexts';
 
 const Home = () => {
+    const { logIn } = useContext(AuthContext);
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password)
+            .then(Result => {
+                const user = Result.user;
+                console.log(user);
+                form.reset();
+                toast.success('Successfully Registered');
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div>
 
-                        <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
+                        <div className="w-96 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                             <h1 className="text-2xl font-bold text-center">Login</h1>
-                            <form action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                            <form onSubmit={handleLogin} className="space-y-6 ng-untouched ng-pristine ng-valid">
                                 <div className="space-y-1 text-sm">
                                     <label htmlFor="username" className="block dark:text-gray-400">Name</label>
 
-                                    <input type="text" name="Name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md " />
+                                    <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md  text-black" />
 
                                 </div>
                                 <div className="space-y-1 text-sm">
                                     <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
 
-                                    <input type="text" name="Email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md " />
+                                    <input type="text" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md  text-black" />
 
                                 </div>
                                 <div className="space-y-1 text-sm">
                                     <label htmlFor="password" className="block dark:text-gray-400">Password</label>
-                                    <input type="password" name="Password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md" />
+                                    <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md text-black" />
                                     <div className="flex justify-end text-xs dark:text-gray-400">
                                         <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                                     </div>
@@ -56,9 +79,9 @@ const Home = () => {
 
                     </div>
                     <div>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
+                        <h1 className="text-5xl font-bold">Watch our Digital Course !</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn ">Get Started</button>
+                        <Link to='/Course'><button className="btn ">Get Started</button></Link>
                     </div>
                 </div>
             </div>
