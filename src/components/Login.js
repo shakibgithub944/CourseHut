@@ -3,9 +3,11 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../UserContext/UserContexts';
+import { useState } from 'react';
 
 const Login = () => {
     const { logIn } = useContext(AuthContext);
+    const [error, setError] = useState('')
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -21,10 +23,15 @@ const Login = () => {
                 toast.success('Successfully Registered');
             })
             .catch(error => {
+                setError(error.message)
                 console.log(error);
             })
 
     }
+const handleGoogleSignIn = () => {
+    
+}
+
     return (
         <div>
             <div className='md:grid grid-cols-3 mt-5'>
@@ -35,16 +42,17 @@ const Login = () => {
                         <div className="space-y-1 text-sm">
                             <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
 
-                            <input type="text" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md  text-black" required/>
+                            <input type="text" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md  text-black" required />
 
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="password" className="block dark:text-gray-400">Password</label>
-                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md text-black" required/>
+                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md text-black" required />
                             <div className="flex justify-end text-xs dark:text-gray-400">
                                 <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                             </div>
                         </div>
+                        <p className='text-red-500'>{error}</p>
                         <button className="block w-full p-3 text-center rounded-sm btn-active px-8 py-3 font-semibold border dark:border-gray-100 dark:text-gray-100  ">Login</button>
                     </form>
                     <div className="flex items-center pt-4 space-x-1">

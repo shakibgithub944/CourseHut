@@ -90,20 +90,19 @@ const Navber = () => {
 
                 <div className='flex items-center hidden space-x-8 lg:flex'>
                     {
-                        user?.displayName? user.displayName: 'N/A'
+                        user?.displayName ? <span className='font-bold'>{user.displayName}</span> : ''
                     }
 
-                    <img src="" className='h-12 rounded' alt="" />
-                </div>
+                    {
+                        user?.photoURL ? <img src={user.photoURL} className='ml-0 h-8 w-8 rounded-full' alt="" /> : ''
+                    }
 
-
-                <ul className="flex items-center hidden space-x-8 lg:flex">
 
                     {
-                        user?.displayName? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
+                        user?.displayName ? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
                             :
                             <div className='flex'>
-                                <li className='mr-4'>
+                                <div className='mr-4'>
                                     <Link
                                         to="/Login"
                                         aria-label="Product pricing"
@@ -112,8 +111,8 @@ const Navber = () => {
                                     >
                                         Login
                                     </Link>
-                                </li>
-                                <li>
+                                </div>
+                                <div>
                                     <Link
                                         to="/Register"
                                         aria-label="Product pricing"
@@ -122,9 +121,16 @@ const Navber = () => {
                                     >
                                         Register
                                     </Link>
-                                </li>
+                                </div>
                             </div>
                     }
+
+                </div>
+
+
+                <ul className="flex items-center hidden space-x-8 lg:flex">
+
+
 
 
                     <li>

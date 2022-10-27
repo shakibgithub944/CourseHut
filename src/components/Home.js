@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 import { AuthContext } from '../UserContext/UserContexts';
+import { useState } from 'react';
 
 const Home = () => {
     const { logIn } = useContext(AuthContext);
+    const [error, setError] = useState('')
 
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
@@ -21,6 +23,7 @@ const Home = () => {
                 toast.success('Successfully Registered');
             })
             .catch(error => {
+                setError(error.message);
                 console.log(error);
             })
 
@@ -35,12 +38,6 @@ const Home = () => {
                             <h1 className="text-2xl font-bold text-center">Login</h1>
                             <form onSubmit={handleLogin} className="space-y-6 ng-untouched ng-pristine ng-valid">
                                 <div className="space-y-1 text-sm">
-                                    <label htmlFor="username" className="block dark:text-gray-400">Name</label>
-
-                                    <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md  text-black" />
-
-                                </div>
-                                <div className="space-y-1 text-sm">
                                     <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
 
                                     <input type="text" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md  text-black" />
@@ -53,6 +50,7 @@ const Home = () => {
                                         <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                                     </div>
                                 </div>
+                                <p className='text-red-500'>{error}</p>
                                 <button className="block w-full p-3 text-center rounded-sm btn-active px-8 py-3 font-semibold border dark:border-gray-100 dark:text-gray-100  ">Login</button>
                             </form>
                             <div className="flex items-center pt-4 space-x-1">
