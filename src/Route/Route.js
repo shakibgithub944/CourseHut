@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
                 path: '/Course',
                 element: <Courses></Courses>,
                 loader: async () => {
-                    return fetch('http://localhost:5000/Course');
+                    return fetch('https://coursehut-server.vercel.app/Course');
                 },
 
             },
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
                 path: '/Course/:id',
                 element: <CourseDetails></CourseDetails>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/Course/${params.id}`);
+                    return fetch(`https://coursehut-server.vercel.app/Course/${params.id}`);
                 },
 
             },
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
                 path: '/Course/:id/CheckOut',
                 element: <PrivetRoute><CheckOut></CheckOut></PrivetRoute>,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/Course/${params.id}`);
+                    return fetch(`https://coursehut-server.vercel.app/Course/${params.id}`);
                 },
 
             },
