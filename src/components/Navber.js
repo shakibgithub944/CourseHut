@@ -89,12 +89,12 @@ const Navber = () => {
 
 
                 <div className='flex items-center hidden space-x-8 lg:flex'>
-                    {
+                    {/* {
                         user?.displayName ? <span className='font-bold'>{user.displayName}</span> : ''
-                    }
+                    } */}
 
                     {
-                        user?.photoURL ? <img src={user.photoURL} className='ml-0 h-8 w-8 rounded-full' alt="" /> : ''
+                        user?.photoURL ? <img title={user.displayName} src={user.photoURL} className='ml-0 h-8 w-8 rounded-full' alt="" /> : ''
                     }
 
 

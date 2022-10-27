@@ -69,9 +69,9 @@ const Register = () => {
                     <h1 className="text-2xl font-bold text-center">Sign up</h1>
                     <form onSubmit={handleRegister} className="space-y-6 ng-untouched ng-pristine ng-valid">
                         <div className="space-y-1 text-sm ">
-                            <label htmlFor="username" className="block dark:text-gray-400">Name</label>
+                            <label htmlFor="username" className="block dark:text-gray-400">Full name</label>
 
-                            <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md text-black" required />
+                            <input type="text" name="name" id="username" placeholder="Full name" className="w-full px-4 py-3 rounded-md text-black" required />
 
                         </div>
                         <div className="space-y-1 text-sm ">
