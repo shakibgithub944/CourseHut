@@ -90,7 +90,7 @@ const Navber = () => {
 
                 <div className='flex items-center hidden space-x-8 lg:flex'>
                     {
-                        user?.email ? user.email: 'N/A'
+                        user?.displayName? user.displayName: 'N/A'
                     }
 
                     <img src="" className='h-12 rounded' alt="" />
@@ -100,7 +100,7 @@ const Navber = () => {
                 <ul className="flex items-center hidden space-x-8 lg:flex">
 
                     {
-                        user?.email ? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
+                        user?.displayName? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
                             :
                             <div className='flex'>
                                 <li className='mr-4'>

@@ -1,3 +1,4 @@
+import { updateProfile } from 'firebase/auth';
 import { Result } from 'postcss';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
@@ -5,25 +6,31 @@ import { AuthContext } from '../UserContext/UserContexts';
 
 
 const Register = () => {
-    const { createNewUser } = useContext(AuthContext);
+    const { createNewUser, updateUserProfile } = useContext(AuthContext);
 
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
+        const photoUrl = form.photoUrl.value;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(name, email, password);
+        // console.log(name);
         createNewUser(email, password)
             .then(Result => {
                 const user = Result.user;
                 form.reset();
                 toast.success('Successfully Registered');
+                updateUserProfile(name, photoUrl)
+                // console.log(name);
+                console.log(user);
             })
             .catch(error => {
                 console.log(error);
             })
     }
+
+
 
     return (
         <div>
@@ -42,13 +49,13 @@ const Register = () => {
                         <div className="space-y-1 text-sm ">
                             <label htmlFor="username" className="block dark:text-gray-400">PhotoUrl</label>
 
-                            <input type="text" name="name" id="" placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md text-black" required />
+                            <input type="text" name="photoUrl" id="" placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md text-black" required />
 
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
 
-                            <input type="email" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md text-black " required/>
+                            <input type="email" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md text-black " required />
 
                         </div>
                         <div className="space-y-1 text-sm">

@@ -33,20 +33,14 @@ const Login = () => {
                     <h1 className="text-2xl font-bold text-center">Login</h1>
                     <form onSubmit={handleLogin} className="space-y-6 ng-untouched ng-pristine ng-valid">
                         <div className="space-y-1 text-sm">
-                            <label htmlFor="username" className="block dark:text-gray-400">Name</label>
-
-                            <input type="text" name="name" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md  text-black" />
-
-                        </div>
-                        <div className="space-y-1 text-sm">
                             <label htmlFor="userEmail" className="block dark:text-gray-400">Email</label>
 
-                            <input type="text" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md  text-black" />
+                            <input type="text" name="email" id="userEmail" placeholder="UserEmail" className="w-full px-4 py-3 rounded-md  text-black" required/>
 
                         </div>
                         <div className="space-y-1 text-sm">
                             <label htmlFor="password" className="block dark:text-gray-400">Password</label>
-                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md text-black" />
+                            <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md text-black" required/>
                             <div className="flex justify-end text-xs dark:text-gray-400">
                                 <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                             </div>
