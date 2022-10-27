@@ -1,11 +1,9 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { BeakerIcon, StarIcon } from '@heroicons/react/24/solid'
-
+import { StarIcon } from '@heroicons/react/24/solid'
 
 const Courses = () => {
-
     const allData = useLoaderData();
 
     return (

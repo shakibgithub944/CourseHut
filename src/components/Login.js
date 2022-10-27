@@ -23,7 +23,7 @@ const Login = () => {
                 const user = Result.user;
                 console.log(user);
                 form.reset();
-                toast.success('Successfully Registered');
+                toast.success('Login Successfull');
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -37,7 +37,7 @@ const Login = () => {
             .then(Result => {
                 const user = Result.user;
                 navigate(from, { replace: true })
-                toast.success('Successfully Registered');
+                toast.success('Login Successfull');
             })
             .catch(error => {
                 setError(error.message);
@@ -51,7 +51,7 @@ const Login = () => {
                 const user = Result.user;
                 console.log(user);
                 navigate(from, { replace: true })
-                toast.success('Successfully Registered');
+                toast.success('Login Successfull');
             })
             .catch(error => {
                 setError(error.message);

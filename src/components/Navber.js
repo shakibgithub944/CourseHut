@@ -249,39 +249,36 @@ const Navber = () => {
 
                                         <li>
 
-                                        {
-                        user?.photoURL ? <img title={user.displayName} src={user.photoURL} className='ml-0 h-8 w-8 rounded-full' alt="" /> : ''
-                    }
-                    {
-                        user?.displayName ? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
-                            :
-                            <div className='flex'>
-                                <div className='mr-4'>
-                                    <Link
-                                        to="/Login"
-                                        aria-label="Product pricing"
-                                        title="Login"
-                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                    >
-                                        Login
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link
-                                        to="/Register"
-                                        aria-label="Product pricing"
-                                        title="Register"
-                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                    >
-                                        Register
-                                    </Link>
-                                </div>
-                            </div>
-                    }
-
+                                            {
+                                                user?.photoURL ? <img title={user.displayName} src={user.photoURL} className='ml-0 h-8 w-8 rounded-full' alt="" /> : ''
+                                            }
+                                            {
+                                                user?.displayName ? <p onClick={handleSignOut} className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">SignOut</p>
+                                                    :
+                                                    <div className='flex'>
+                                                        <div className='mr-4'>
+                                                            <Link
+                                                                to="/Login"
+                                                                aria-label="Product pricing"
+                                                                title="Login"
+                                                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                            >
+                                                                Login
+                                                            </Link>
+                                                        </div>
+                                                        <div>
+                                                            <Link
+                                                                to="/Register"
+                                                                aria-label="Product pricing"
+                                                                title="Register"
+                                                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                            >
+                                                                Register
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                            }
                                         </li>
-
-
                                         <li>
                                             <label htmlFor="Toggle1" className="inline-flex items-center space-x-4 cursor-pointer">
                                                 {/* <span>Dark</span> */}

@@ -57,12 +57,8 @@ const Register = () => {
             })
 
     }
-
-
-
     return (
         <div>
-
             <div className='flex justify-center  mt-5'>
                 <div></div>
                 <div className="w-96 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
@@ -111,10 +107,9 @@ const Register = () => {
                         </button>
                     </div>
                 </div>
-                <div></div>
-
+                <div>
+                </div>
             </div>
-
         </div>
     );
 };

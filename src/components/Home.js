@@ -1,61 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-
-import { AuthContext } from '../UserContext/UserContexts';
-import { useState } from 'react';
 
 const Home = () => {
-    const { logIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
-    const [error, setError] = useState('')
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        // const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        logIn(email, password)
-            .then(Result => {
-                const user = Result.user;
-                console.log(user);
-                form.reset();
-                toast.success('Successfully Registered');
-            })
-            .catch(error => {
-                setError(error.message);
-                console.log(error);
-            })
-
-    }
-
-    const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(Result => {
-                const user = Result.user;
-                console.log(user);
-                toast.success('Successfully Registered');
-            })
-            .catch(error => {
-                setError(error.message);
-                console.log(error);
-            })
-
-    }
-    const handleGitHubSignIn = () => {
-        gitHubSignIn()
-            .then(Result => {
-                const user = Result.user;
-                console.log(user);
-                toast.success('Successfully Registered');
-            })
-            .catch(error => {
-                setError(error.message);
-                console.log(error);
-            })
-
-    }
-
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
