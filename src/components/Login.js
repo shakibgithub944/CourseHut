@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../UserContext/UserContexts';
 import { useState } from 'react';
@@ -8,6 +8,9 @@ import { useState } from 'react';
 const Login = () => {
     const { logIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
     const [error, setError] = useState('')
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/Course';
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -21,6 +24,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 toast.success('Successfully Registered');
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message)
@@ -32,6 +36,7 @@ const Login = () => {
         googleSignIn()
             .then(Result => {
                 const user = Result.user;
+                navigate(from, { replace: true })
                 toast.success('Successfully Registered');
             })
             .catch(error => {
@@ -45,6 +50,7 @@ const Login = () => {
             .then(Result => {
                 const user = Result.user;
                 console.log(user);
+                navigate(from, { replace: true })
                 toast.success('Successfully Registered');
             })
             .catch(error => {

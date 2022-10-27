@@ -7,6 +7,7 @@ import Error from "../components/Error";
 import Faq from "../components/Faq";
 import Home from "../components/Home";
 import Login from "../components/Login";
+import PrivetRoute from "../components/PrivetRoute";
 import Register from "../components/Register";
 import Main from "../Layout/Main";
 
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/Course/:id/CheckOut',
-                element: <CheckOut></CheckOut>,
+                element: <PrivetRoute><CheckOut></CheckOut></PrivetRoute>,
                 loader: async ({ params }) => {
                     return fetch(`http://localhost:5000/Course/${params.id}`);
                 },
